@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teste 2</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <a v-bind:href="docs">Vue js</a>
+      <!-- "v-" indica uma diretiva, a diretiva pode receber algo diretamente do codigo -->
+      <p>Instrutor: <span v-text="instrutor"></span></p>
+      <!-- v once exibe a informação e não a altera junto com alterações posteriores -->
+      <p v-once>Nome Completo: {{nome}}</p>
+      <p>Nome: {{getNome()}}</p>
+      <p>Curso: {{curso}} |</p>
+      <!-- v-html interpreta e exibe o html passado dentro da string do Vue -->
+      <p v-html="curso">Curso: {{curso}} |</p>
+    </div>
+    <script type="text/javascript">
+      new Vue({
+        el: "#app",
+        data: {
+          // vue js ignora tags html passadas dentro dele evitando ataques xss
+          curso: "Curso de <span style='color: purple'>Vue/Js</span>",
+          docs: "https://vuejs.org",
+          instrutor: "Plinio Neves",
+          nome: "Plinio Neves",
+        },
+        methods: {
+          getNome: function () {
+            this.nome = "Plinio";
+            return this.nome;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
