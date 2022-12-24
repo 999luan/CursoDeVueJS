@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teste 2</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{curso}} => {{ curso.split('').reverse().join('')}}</p>
+      <p>{{curso}} => {{ cursoInvetido}}</p>
+      <p>Nome Original: {{curso}}</p>
+      <p>Nome invertido (computed): {{cursoInvetidoComputed}}</p>
+      <p>Nome invertido (method): {{cursoInvetidoMethod()}}</p>
+      <p>Autor: {{nomeDoAutorInteiro ? 'Luan Carlos' : 'luan'}}</p>
+      <button @click="nomeDoAutorInteiro = !nomeDoAutorInteiro">
+        <hr />
+        Alterar nome do autor
+      </button>
+
+      <input @keyup.enter="alterarNomeDoCurso" />
+    </div>
+    <script type="text/javascript">
+      new Vue({
+        el: "#app",
+        data: {
+          curso: "curso de vue",
+          nomeDoAutorInteiro: false,
+        },
+        // computed só é reexecutada se a propriedade de retorno for alterada
+        computed: {
+          cursoInvetido: function () {
+            console.log("Computed!");
+            return this.curso.split("").reverse().join("");
+          },
+          cursoInvetidoComputed: function () {
+            return this.curso.split("").reverse().join("");
+          },
+        },
+        // o methodo é chamado a cada nova renderização mesmo que nao tenha haver com o methodo em si
+        methods: {
+          alterarNomeDoCurso: function (event) {
+            this.curso = event.target.value;
+          },
+          cursoInvetidoMethod: function (event) {
+            console.log("Method!");
+
+            return this.curso.split("").reverse().join("");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
