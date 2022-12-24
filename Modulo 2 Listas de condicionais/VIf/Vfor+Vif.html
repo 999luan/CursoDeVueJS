@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+      .separador {
+        list-style-type: nome;
+        border-bottom: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Tarefas:</h1>
+
+      <ul>
+        <li v-for="tarefa in tarefas" :key="tarefa.id" v-if="!tarefa.completa">
+          {{tarefa.titulo}}
+        </li>
+      </ul>
+      <h1>Tarefas a Fazer:</h1>
+      <u v-if="tarefasIncompletas.length">
+        <li
+          v-for="tarefa in tarefasIncompletas"
+          :key="tarefa.id"
+          v-if="!tarefa.completa"
+        >
+          {{tarefa.titulo}}
+        </li>
+      </ul>
+      <p v-else> Não existem tarefas</p>
+    </div>
+    <script type="text/javascript">
+      new Vue({
+        el: "#app",
+        data: {
+          tarefas: [
+            { id: 1, titulo: "Tocar Teclado", completa: true },
+            { id: 2, titulo: "Vender monitormonitor", completa: true },
+            { id: 3, titulo: "trocar mouse", completa: true },
+            { id: 4, titulo: "pasta termica do processador", completa: true },
+          ],
+        },
+        computed: {
+          tarefasIncompletas: function () {
+            // retorna novo array sem alterar original
+            return this.tarefas.filter(function (tarefa) {
+              return !tarefa.completa;
+            });
+          },
+        },
+        methods: {
+          addProduto: function () {
+            let id = this.produtos.length + 1;
+            this.produtos.push({ id: id, nome: "Produto" + id });
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
+
+<!--  -->

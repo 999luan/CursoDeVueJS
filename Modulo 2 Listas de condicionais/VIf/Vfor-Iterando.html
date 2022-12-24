@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Produtos</h1>
+      <ul>
+        <li v-for="valor in produto">{{valor}}</li>
+      </ul>
+      <ul>
+        <li v-for="(valor,chave) in produto">{{chave}} : {{valor}}</li>
+      </ul>
+      <ul>
+        <!-- abaixo a ordem de parametros do vfor -->
+        <li v-for="(valor,chave,index) in produto">
+          {{index}} - {{chave}} : {{valor}}
+        </li>
+      </ul>
+    </div>
+    <script type="text/javascript">
+      new Vue({
+        el: "#app",
+        data: {
+          produto: {
+            Id: 1,
+            nome: "Teclado",
+            marca: "Dell",
+            valor: 100,
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
