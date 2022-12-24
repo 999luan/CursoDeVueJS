@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h2>Instancia Vue</h2>
+      <p>{{titulo}}</p>
+      <h3>Propriedades Dinamicas</h3>
+      <p>{{novaPropriedade}}</p>
+      <p>{{usuario}}</p>
+    </div>
+    <script type="text/javascript">
+      let vm = new Vue({
+        el: "#app",
+        data: {
+          titulo: "Curso de Vuejs",
+          usuario: {},
+        },
+      });
+      //vm.novaPropriedade = "Nova propriedade"; //não reativo
+      //propriedade deve ser ao menos inserida no objeto data e iniciada com valor Default
+      setTimeout(() => {
+        vm.novaPropriedade = "Nova propriedade";
+        vm.$set(vm.usuario, "nome", "Luan Carlos");
+      }, 3000);
+      //ao disparar um novo falor na interface (set no usuario) novapropriedade é recebida junto mesmo não sendo reativa, o metodo correto é o metodo "$set"
+    </script>
+  </body>
+</html>

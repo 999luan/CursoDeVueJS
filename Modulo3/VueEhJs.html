@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h2>Instancia Vue</h2>
+      <button @click="mostrar = !mostrar">toggle</button>
+      <p v-if="mostrar">{{titulo}}</p>
+    </div>
+    <script type="text/javascript">
+      let data = {
+        titulo: "Curso de Vuejs",
+        mostrar: true,
+      };
+      let vm = new Vue({
+        el: "#app",
+        data: data,
+      });
+      console.log(vm.$el === document.getElementById("app"));
+      console.log(vm.$data === data);
+      setTimeout(() => {
+        data.titulo = "VueJs";
+      }, 3000);
+    </script>
+  </body>
+</html>
