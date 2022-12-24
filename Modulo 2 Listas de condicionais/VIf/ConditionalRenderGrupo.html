@@ -4,20 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Teste 2</title>
+    <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   </head>
   <body>
     <div id="app">
-      <dir></dir>
-      <p>Nome: {{nome}}</p>
-      <input v-model="nome" />
+      <ul>
+        <li>Ola vueJs</li>
+        <li>item 1</li>
+        <template v-if="mostrar">
+          <li>item 2</li>
+          <li>item 3</li>
+        </template>
+      </ul>
     </div>
+
     <script type="text/javascript">
       new Vue({
         el: "#app",
         data: {
-          nome: "Luan",
+          mostrar: true,
         },
       });
     </script>

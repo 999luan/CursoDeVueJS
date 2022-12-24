@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teste 2</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+      .caixa {
+        width: 200px;
+        height: 200px;
+        display: inline-block;
+        margin-right: 10px;
+        background-color: gray;
+      }
+      .coral {
+        background-color: lightcoral;
+      }
+      .verde {
+        background-color: lightgreen;
+      }
+      .azul {
+        background-color: lightblue;
+      }
+      .circulo {
+        border-radius: 100%;
+      }
+      #app div {
+        display: inline-block;
+        margin-right: 10px;
+        background-color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div :style="estiloCSS"></div>
+      <div
+        :style="[estiloCSS, { border: '12px solid black','background-color': 'blue' }]"
+      ></div>
+      <input v-model="nomeDaClasse" placeholder="Nome da classe CSS" />
+      <input v-model="cor" placeholder="cor do css" />
+      <input v-model.number="tamanho" placeholder="tamanho em pixels" />
+    </div>
+    <script type="text/javascript">
+      new Vue({
+        el: "#app",
+        data: {
+          cor: "",
+          tamanho: 200,
+          aplicarClasse: false,
+          nomeDaClasse: "",
+        },
+        computed: {
+          estiloCSS: function () {
+            return {
+              backgroundColor: this.cor,
+              height: +this.tamanho + 10 + "px",
+              width: "100px",
+            };
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

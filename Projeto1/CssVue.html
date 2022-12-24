@@ -6,10 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Teste 2</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+      .caixa {
+        width: 200px;
+        height: 200px;
+        display: inline-block;
+        margin-right: 10px;
+        background-color: gray;
+      }
+      .coral {
+        background-color: lightcoral;
+      }
+    </style>
   </head>
   <body>
     <div id="app">
-      <dir></dir>
+      <dir class="caixa" :class="{coral: true}"></dir>
       <p>Nome: {{nome}}</p>
       <input v-model="nome" />
     </div>
@@ -17,7 +29,7 @@
       new Vue({
         el: "#app",
         data: {
-          nome: "Luan",
+          aplicarClasse: false,
         },
       });
     </script>
